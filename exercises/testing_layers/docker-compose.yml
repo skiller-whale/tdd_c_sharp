@@ -1,0 +1,21 @@
+services:
+  dev-server:
+    image: "mcr.microsoft.com/dotnet/sdk:8.0"
+    volumes:
+      - "./Wordle:/Wordle"
+    working_dir: "/Wordle"
+    command: ["dotnet", "watch", "run"]
+    ports:
+      - "3001:3001"
+  tests:
+    build: "."
+    volumes:
+      - "./package.json:/exercises/package.json"
+      - "./package-lock.json:/exercises/package-lock.json"
+      - "./Wordle:/exercises/Wordle"
+      - "./Wordle.Tests.Core:/exercises/Wordle.Tests.Core"
+      - "./Wordle.Tests.HTTP:/exercises/Wordle.Tests.HTTP"
+      - "./Wordle.Tests.E2E:/exercises/Wordle.Tests.E2E"
+    working_dir: "/exercises"
+    command: ["npm", "run", "test"]
+    init: true # to ensure signal handling works (and you can kill the container with ctrl-c)

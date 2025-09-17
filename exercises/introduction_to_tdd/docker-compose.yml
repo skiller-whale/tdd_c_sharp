@@ -1,9 +1,11 @@
 services:
   tests:
-    image: mcr.microsoft.com/dotnet/sdk:9.0
+    build: "."
     volumes:
-      - ./src:/exercises/src
-      - ./Wordle.csproj:/exercises/Wordle.csproj
-    working_dir: /exercises
-    command: ["dotnet", "watch", "test"]
+      - "./package.json:/exercises/package.json"
+      - "./package-lock.json:/exercises/package-lock.json"
+      - "./Wordle:/exercises/Wordle"
+      - "./Wordle.Tests:/exercises/Wordle.Tests"
+    working_dir: "/exercises"
+    command: ["npm", "run", "test"]
     init: true # to ensure signal handling works (and you can kill the container with ctrl-c)

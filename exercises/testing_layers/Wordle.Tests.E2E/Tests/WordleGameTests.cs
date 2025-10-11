@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Microsoft.Playwright;
+using System.Threading.Tasks;
 using Wordle.Tests.E2E.Framework;
 using Xunit;
 

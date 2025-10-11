@@ -1,4 +1,19 @@
+# .NET build results
 bin/
 obj/
-node_modules/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Test results
+TestResults/
+
+# Build logs
+*.log
+
+# database files
+data.json
+
+# Others
 .DS_Store

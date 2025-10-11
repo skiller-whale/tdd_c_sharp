@@ -1,4 +1,6 @@
 using Microsoft.Playwright;
+using System;
+using System.Threading.Tasks;
 
 namespace Wordle.Tests.E2E.Framework;
 

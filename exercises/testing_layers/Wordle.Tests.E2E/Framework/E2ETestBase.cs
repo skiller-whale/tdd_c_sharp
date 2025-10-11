@@ -1,6 +1,9 @@
-using System.Text.Json;
 using FluentAssertions;
 using Microsoft.Playwright;
+using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Wordle.Tests.E2E.Framework;
@@ -11,9 +14,9 @@ public abstract class E2ETestBase : IAsyncLifetime
     protected readonly HttpClient HttpClient;
     protected readonly RealServerTestFixture ServerFixture;
     
-    private IPlaywright? _playwright;
-    private IBrowser? _browser;
-    private IPage? _page;
+    private IPlaywright _playwright;
+    private IBrowser _browser;
+    private IPage _page;
     protected TestBrowser Browser = null!;
 
     protected E2ETestBase(RealServerTestFixture serverFixture)
@@ -45,7 +48,7 @@ public abstract class E2ETestBase : IAsyncLifetime
         _playwright?.Dispose();
     }
 
-    protected async Task<T?> GetAsync<T>(string endpoint)
+    protected async Task<T> GetAsync<T>(string endpoint)
     {
         var response = await HttpClient.GetAsync(endpoint);
         response.IsSuccessStatusCode.Should().BeTrue();

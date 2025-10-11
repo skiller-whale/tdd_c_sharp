@@ -1,11 +1,14 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Wordle.Tests.E2E.Framework;
 
 public class RealServerTestFixture : IAsyncLifetime
 {
-    private IHost? _webHost;
+    private IHost _webHost;
     private readonly int _webPort;
     public string WebBaseUrl => $"http://localhost:{_webPort}";
 
@@ -20,7 +23,7 @@ public class RealServerTestFixture : IAsyncLifetime
         _webHost = Program.CreateHostBuilder(webArgs)
             .ConfigureAppConfiguration(builder =>
             {
-                builder.AddInMemoryCollection(new Dictionary<string, string?>
+                builder.AddInMemoryCollection(new Dictionary<string, string>
                 {
                     ["ApiBaseUrl"] = WebBaseUrl
                 });

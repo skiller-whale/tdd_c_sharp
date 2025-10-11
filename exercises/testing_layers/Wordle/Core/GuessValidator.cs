@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 namespace Wordle.Core;
 
+#nullable enable
+
 public class GuessValidator
 {
     public class ValidationResult

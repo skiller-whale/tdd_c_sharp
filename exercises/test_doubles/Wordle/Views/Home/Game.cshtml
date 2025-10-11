@@ -1,0 +1,43 @@
+@model Wordle.Models.WordleViewModel
+@using Wordle.Core
+
+<div class="guesses">
+    @for (int i = 0; i < 6; i++)
+    {
+        <div class="guess">
+            @for (int j = 0; j < 5; j++)
+            {
+                <span class="@(Model.Evaluations.Count > i ? Model.GetLetterClass(Model.Evaluations[i][j]) : "")">
+                    @(Model.Guesses.Count > i ? Model.Guesses[i][j] : "")
+                </span>
+            }
+        </div>
+    }
+</div>
+
+@if (Model.Status == Status.Won)
+{
+    <p class="status">You won!</p>
+}
+else if (Model.Status == Status.Lost)
+{
+    <p class="status">You lost!</p>
+    <p>The correct answer was</p>
+    <p class="correct-answer">WHALE</p>
+}
+else
+{
+    <form method="post">
+        <input type="text" name="latestGuess" aria-label="guess" autofocus autocomplete="off" required />
+    </form>
+    @if (Model.Error != null)
+    {
+        <p class="error">@Model.Error</p>
+    }
+}
+
+@if (Model.Status != Status.Playing)
+{
+    <partial name="_NewGameForm" />
+    @* TODO: include stats *@
+}

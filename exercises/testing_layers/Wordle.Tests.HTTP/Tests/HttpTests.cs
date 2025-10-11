@@ -1,21 +1,16 @@
 ﻿using FluentAssertions;
+using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Wordle.Tests.HTTP.Framework;
 using Xunit;
-using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Wordle.Tests.HTTP.Tests;
 
 [Collection("HttpTest")]
-public class HttpTests
+public class HttpTests(HttpTestFixture fixture)
 {
-    private readonly HttpTestFixture _fixture;
-
-    public HttpTests(HttpTestFixture fixture)
-    {
-        _fixture = fixture;
-    }
+    private readonly HttpTestFixture _fixture = fixture;
 
     [Fact]
     public async Task Get_index_returns_some_HTML()

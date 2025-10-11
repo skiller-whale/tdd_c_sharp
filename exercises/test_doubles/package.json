@@ -1,0 +1,11 @@
+{
+  "name": "tdd-csharp",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "npm install && run-run-run --watch-file-extensions=cs,cshtml 'dotnet test Wordle.Tests.Core' 'dotnet test Wordle.Tests.Web'"
+  },
+  "devDependencies": {
+    "@nowprototypeit/run-run-run": "github:nowprototypeit/run-run-run#f429f4d"
+  }
+}

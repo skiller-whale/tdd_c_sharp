@@ -1,0 +1,9 @@
+services:
+  tests:
+    build: "."
+    volumes:
+      - "./exercise_2:/exercises/exercise_2"
+      - "./package.json:/exercises/package.json"
+    working_dir: "/exercises"
+    command: ["npm", "run", "test"]
+    init: true # to ensure signal handling works (and you can kill the container with ctrl-c)

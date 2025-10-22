@@ -7,7 +7,7 @@ services:
       SW_RUNNING_IN_HOSTED_ENV:
       WATCHER_BASE_PATH: "/exercises"
       ATTENDANCE_ID_FILE: "/attendance_id"
-      WATCHED_EXTS: ".cs"
+      WATCHED_EXTS: ".cs .cshtml"
       IGNORE_MATCH: ".git node_modules bin obj"
     volumes:
       - "./exercises:/exercises:ro"

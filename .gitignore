@@ -1,13 +1,16 @@
+# node modules
+node_modules
+
 # .NET build results
-bin/
-obj/
+bin
+obj
 
 # NuGet packages
 *.nupkg
-packages/
+packages
 
 # Test results
-TestResults/
+TestResults
 
 # Build logs
 *.log

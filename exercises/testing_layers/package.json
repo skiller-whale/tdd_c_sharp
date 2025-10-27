@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "npm install && run-run-run --watch-file-extensions=cs,cshtml 'dotnet test Wordle.Tests.Core' 'dotnet test Wordle.Tests.HTTP' 'dotnet test Wordle.Tests.E2E'"
+    "test": "dotnet build Wordle.Tests.Core && dotnet build Wordle.Tests.HTTP && dotnet build Wordle.Tests.E2E && npm install && run-run-run --watch-file-extensions=cs,cshtml 'dotnet test Wordle.Tests.Core' 'dotnet test Wordle.Tests.HTTP' 'dotnet test Wordle.Tests.E2E'"
   },
   "devDependencies": {
     "@nowprototypeit/run-run-run": "github:nowprototypeit/run-run-run#f429f4d"

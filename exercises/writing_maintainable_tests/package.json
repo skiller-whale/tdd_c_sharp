@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "npm install && run-run-run --watch-file-extensions=cs 'dotnet test exercise_2/Api.Tests'"
+    "test": "dotnet build exercise_2/Api.Tests && npm install && run-run-run --watch-file-extensions=cs 'dotnet test exercise_2/Api.Tests'"
   },
   "devDependencies": {
     "@nowprototypeit/run-run-run": "github:nowprototypeit/run-run-run#f429f4d"

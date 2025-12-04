@@ -44,12 +44,15 @@
         button {
             padding: 1rem 0.5rem;
             font-size: 1.125rem;
+            font-weight: bold;
             background-color: #6aaa64;
             color: white;
             border: none;
             cursor: pointer;
             text-transform: uppercase;
-            font-weight: bold;
+            &:hover {
+                background-color: #5a9954;
+            }
         }
 
         .error {
@@ -110,6 +113,8 @@
         .stats {
             display: grid;
             grid-gap: 0.5rem;
+            padding: 0.5rem;
+            border: 2px solid #ccc;
         }
     </style>
 </head>

@@ -17,6 +17,7 @@ public class HomeController(IDatabase database, IAnswerService answerService) : 
     [HttpGet]
     public IActionResult Index()
     {
+        // create a sessionID cookie if it doesn't already exist
         EnsureSession();
 
         // display the new game form view
@@ -26,8 +27,6 @@ public class HomeController(IDatabase database, IAnswerService answerService) : 
     [HttpPost]
     public IActionResult NewGame()
     {
-        EnsureSession();
-
         // create a new game
         // TODO: randomize the answer using _answerService.GetRandomAnswer()
         var correctAnswer = "whale";
@@ -41,16 +40,10 @@ public class HomeController(IDatabase database, IAnswerService answerService) : 
     [HttpGet]
     public IActionResult Game(string id)
     {
-        EnsureSession();
-
         // get the game from the database
         var game = _database.GetGame(id);
-        if (game == null)
-        {
-            return NotFound("Game not found");
-        }
         
-        // Convert the game to view model
+        // convert the game to view model
         var model = new WordleViewModel
         {
             Guesses = game.Guesses,
@@ -59,7 +52,12 @@ public class HomeController(IDatabase database, IAnswerService answerService) : 
             Error = game.Error,
         };
 
-        // TODO: Include game stats if game is over
+        // TODO: include game stats for this session if game is over
+        if (game.Status != Status.Playing)
+        {
+            var sessionId = GetSessionId();
+            // ...
+        }
 
         // display the game view
         return View("Game", model);
@@ -68,20 +66,19 @@ public class HomeController(IDatabase database, IAnswerService answerService) : 
     [HttpPost]
     public IActionResult MakeGuess(string id, string latestGuess)
     {
-        EnsureSession();
-
         // get the game from the database
         var game = _database.GetGame(id);
-        if (game == null)
-        {
-            return RedirectToAction("Index");
-        }
 
         // update the game state
         game.MakeGuess(latestGuess.ToLower());
         _database.SaveGame(game);
 
         // TODO: when the game is over, save the user's game history
+        if (game.Status != Status.Playing)
+        {
+            var sessionId = GetSessionId();
+            // ...
+        }
 
         // redirect to the game page
         return RedirectToAction("Game", new { id });
@@ -93,5 +90,10 @@ public class HomeController(IDatabase database, IAnswerService answerService) : 
         {
             HttpContext.Session.SetString(SESSION_ID_KEY, System.Guid.NewGuid().ToString());
         }
+    }
+
+    private string GetSessionId()
+    {
+        return HttpContext.Session.GetString(SESSION_ID_KEY)!;
     }
 }

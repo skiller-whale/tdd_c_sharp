@@ -9,15 +9,10 @@ namespace Wordle.Services
         string GetRandomAnswer();
     }
 
-    public class RandomAnswerService : IAnswerService
+    public class RandomAnswerService(Random random) : IAnswerService
     {
-        private readonly Random _random;
+        private readonly Random _random = random;
         private int _lastIndex = -1;
-
-        public RandomAnswerService(Random random)
-        {
-            _random = random;
-        }
 
         public string GetRandomAnswer()
         {

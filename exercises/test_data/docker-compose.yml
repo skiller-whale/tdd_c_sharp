@@ -1,0 +1,24 @@
+services:
+  tests:
+    build:
+      context: .
+      target: tests
+    volumes:
+      - ./WordleStats:/app/WordleStats
+      - ./WordleStats.Tests:/app/WordleStats.Tests
+      - ./data:/app/data:ro
+    command: ["dotnet", "test", "-c", "Release", "--verbosity", "normal"]
+
+  cli:
+    build:
+      context: .
+      target: cli
+    stdin_open: true
+    tty: true
+    environment:
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+    volumes:
+      - ./WordleStats:/app/WordleStats
+      - ./WordleStats.Tests:/app/WordleStats.Tests
+      - ./data:/app/data:ro
+    entrypoint: ["dotnet", "run", "--project", "WordleStats.Cli/WordleStats.Cli.csproj", "--"]

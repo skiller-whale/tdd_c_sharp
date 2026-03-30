@@ -1,0 +1,20 @@
+name: csharp_inside_out_tdd
+
+services:
+  exercises:
+    build: .
+    volumes:
+      - ./:/inside_out_tdd
+      - ./attendance_id:/app/sync/attendance_id
+    working_dir: /inside_out_tdd
+    tty: true
+    command:
+      - -lc
+      - |
+        echo 'export PS1="🐳 \[\033[1;32m\]\u@:\[\033[1;34m\]\W\[\033[0m\] \$ "' >> /root/.bashrc
+        echo 'trap "echo ‼️ You just quit the exercises terminal.; echo To get it back run: docker compose run exercises" EXIT' >> /root/.bashrc
+        echo "To run the tests:"
+        echo "  dotnet test -v minimal"
+        echo "Or for watch mode:"
+        echo "  dotnet watch --project WordleCheat.Tests test"
+        exec /bin/bash -l

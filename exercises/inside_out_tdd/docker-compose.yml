@@ -5,6 +5,10 @@ services:
     build: .
     volumes:
       - ./:/inside_out_tdd
+      - csharp_inside_out_wordle_bin:/inside_out_tdd/WordleCheat/bin
+      - csharp_inside_out_wordle_obj:/inside_out_tdd/WordleCheat/obj
+      - csharp_inside_out_tests_bin:/inside_out_tdd/WordleCheat.Tests/bin
+      - csharp_inside_out_tests_obj:/inside_out_tdd/WordleCheat.Tests/obj
       - ./attendance_id:/app/sync/attendance_id
     working_dir: /inside_out_tdd
     tty: true
@@ -18,3 +22,9 @@ services:
         echo "Or for watch mode:"
         echo "  dotnet watch --project WordleCheat.Tests test"
         exec /bin/bash -l
+
+volumes:
+  csharp_inside_out_wordle_bin:
+  csharp_inside_out_wordle_obj:
+  csharp_inside_out_tests_bin:
+  csharp_inside_out_tests_obj:

@@ -28,11 +28,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Tests.Core", "exerci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wordle.Tests.Web", "exercises\test_doubles\Wordle.Tests.Web\Wordle.Tests.Web.csproj", "{F72E8AF3-5D18-45F2-AE97-90BBC019D6F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "writing_maintainable_tests", "writing_maintainable_tests", "{AC2F95B3-251D-4D38-A586-731E7D5B0DDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FailingWell", "exercises\failing_well\FailingWell\FailingWell.csproj", "{B94EBC21-5E55-430C-91E4-C15D9D534C0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "exercises\writing_maintainable_tests\exercise_2\Api\Api.csproj", "{B94EBC21-5E55-430C-91E4-C15D9D534C0D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Tests", "exercises\writing_maintainable_tests\exercise_2\Api.Tests\Api.Tests.csproj", "{7D635BD0-5DBA-4856-A835-A81C4E5C7AA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FailingWell.Tests", "exercises\failing_well\FailingWell.Tests\FailingWell.Tests.csproj", "{7D635BD0-5DBA-4856-A835-A81C4E5C7AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

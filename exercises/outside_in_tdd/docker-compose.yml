@@ -1,0 +1,30 @@
+name: csharp_outside_in_tdd
+
+services:
+  exercises:
+    build: .
+    volumes:
+      - ./:/outside_in_tdd
+      - csharp_outside_in_wordle_bin:/outside_in_tdd/WordleCheat/bin
+      - csharp_outside_in_wordle_obj:/outside_in_tdd/WordleCheat/obj
+      - csharp_outside_in_tests_bin:/outside_in_tdd/WordleCheat.Tests/bin
+      - csharp_outside_in_tests_obj:/outside_in_tdd/WordleCheat.Tests/obj
+      - ./attendance_id:/app/sync/attendance_id
+    working_dir: /outside_in_tdd
+    tty: true
+    command:
+      - -lc
+      - |
+        echo 'export PS1="🐳 \[\033[1;32m\]\u@:\[\033[1;34m\]\W\[\033[0m\] \$ "' >> /root/.bashrc
+        echo 'trap "echo ‼️ You just quit the exercises terminal.; echo To get it back run: docker compose run exercises" EXIT' >> /root/.bashrc
+        echo "To run the tests:"
+        echo "  dotnet test -v minimal"
+        echo "Or for watch mode:"
+        echo "  dotnet watch --project WordleCheat.Tests test"
+        exec /bin/bash -l
+
+volumes:
+  csharp_outside_in_wordle_bin:
+  csharp_outside_in_wordle_obj:
+  csharp_outside_in_tests_bin:
+  csharp_outside_in_tests_obj:

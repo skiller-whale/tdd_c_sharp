@@ -8,7 +8,7 @@ public class WordleAppTests
     [Fact]
     public void RunReturnsEmptyListForNow()
     {
-        var app = new WordleApp();
+        var app = new WordleApp("words.txt");
 
         var result = app.Run(["_____", "FTH", "ISYCA"]);
 

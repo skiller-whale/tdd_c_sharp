@@ -8,7 +8,8 @@ public class WordleAppTests
     [Fact]
     public void RunReturnsEmptyListForNow()
     {
-        var app = new WordleApp("words.txt");
+        var path = Path.Combine("TestFixtures", "good-words.json");
+        var app = new WordleApp(path);
 
         var result = app.Run(["_____", "FTH", "ISYCA"]);
 

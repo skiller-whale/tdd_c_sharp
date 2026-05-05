@@ -21,6 +21,7 @@ services:
         echo "  dotnet test -v minimal"
         echo "Or for watch mode:"
         echo "  dotnet watch --project WordleCheat.Tests test"
+        echo "You may need to restart the watch after adding new files."
         exec /bin/bash -l
 
 volumes:

@@ -9,8 +9,8 @@ public class WordleApp
         _wordFilePath = wordFilePath;
     }
 
-    public IReadOnlyList<string> Run(string[] args)
+    public List<string> Run(string[] args)
     {
-        return Array.Empty<string>();
+        return new List<string>();
     }
 }

@@ -23,4 +23,10 @@
   <ItemGroup>
     <ProjectReference Include="..\WordleCheat\WordleCheat.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TestFixtures/**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

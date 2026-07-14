@@ -1,0 +1,13 @@
+#!/bin/sh
+# Serves the most recent Stryker.NET HTML report on port 3000.
+REPORT_DIR=$(ls -dt StrykerOutput/*/reports 2>/dev/null | head -n1)
+if [ -z "$REPORT_DIR" ]; then
+    echo "No Stryker report found yet. Run 'dotnet stryker' first."
+    exit 1
+fi
+# Stryker names the report 'mutation-report.html'; make it the directory index
+# so http://localhost:3000 opens it directly.
+cp -f "$REPORT_DIR/mutation-report.html" "$REPORT_DIR/index.html" 2>/dev/null
+cd "$REPORT_DIR"
+echo "Serving! Click the link on the session page."
+python3 -m http.server -b 0.0.0.0 3000 > /dev/null

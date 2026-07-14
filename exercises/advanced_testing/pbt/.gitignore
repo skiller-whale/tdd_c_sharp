@@ -1,0 +1,15 @@
+# .NET build results
+bin/
+obj/
+
+# CsCheck failure-sample cache
+CsCheck_Hash/
+*.fscheck
+
+# Local/editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log

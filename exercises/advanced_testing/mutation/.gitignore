@@ -1,0 +1,14 @@
+# .NET build results
+bin/
+obj/
+
+# Stryker.NET output (mutation reports and sandbox)
+StrykerOutput/
+
+# Local/editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
